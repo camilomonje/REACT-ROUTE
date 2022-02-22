@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Routes, NavLink } from "react-router-dom";
+import Contacto from "./components/Contacto";
+import Inicio from "./components/Inicio";
+import Nosotros from "./components/Nosotros";
+import User from "./components/User";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container mt-5">
+        <div className="btn-group">
+          <Link to="/" className="btn btn-dark">
+            Inicio
+          </Link>
+          <Link to="/nosotros" className="btn btn-dark">
+            Nosotros
+          </Link>
+          <Link to="/contacto" className="btn btn-dark">
+            Contacto
+          </Link>
+
+        </div>
+        <hr />
+        <Routes>
+          <Route path="/nosotros/:id" element= {<User />}>            
+          </Route>
+          <Route          
+            path="/contacto"
+            element={<Contacto />}
+          ></Route>
+          <Route            
+            path="/nosotros"
+            element={ <Nosotros />}
+          ></Route>
+          <Route path="/" element={<Inicio />}>
+            
+          </Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
